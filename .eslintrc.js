@@ -8,6 +8,7 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:testing-library/react",
+    "eslint-config-postcss",
   ],
   overrides: [],
   parser: "@typescript-eslint/parser",
