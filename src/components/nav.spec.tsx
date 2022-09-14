@@ -4,6 +4,6 @@ import Nav from "./nav";
 describe("nav component", () => {
   it("should render without crashing", () => {
     render(<Nav />);
-    screen.getByText(/flos detailing/i);
+    screen.getByText(/home/i);
   });
 });
