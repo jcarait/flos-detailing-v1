@@ -3,13 +3,12 @@
  */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/flowbite-react/**/*.js",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [],
 };
