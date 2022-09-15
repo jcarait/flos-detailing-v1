@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import { AiFillCaretDown } from "react-icons/ai";
 
 export default function Nav(): JSX.Element {
   const [active, setActive] = useState(false);
@@ -13,7 +14,7 @@ export default function Nav(): JSX.Element {
   };
 
   return (
-    <nav className="bg-black py-4 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-black py-4 shadow-lg">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex justify-between">
           <div className="flex w-full">
@@ -35,11 +36,53 @@ export default function Nav(): JSX.Element {
                   About
                 </a>
               </Link>
-              <Link href="/services">
-                <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
-                  Services
-                </a>
-              </Link>
+              <div className="dropdown group inline-block overflow-hidden">
+                <div className="flex items-center">
+                  <Link href="/services">
+                    <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                      Services
+                    </a>
+                  </Link>
+                  <span className="mt-1 text-white">
+                    <AiFillCaretDown />
+                  </span>
+                </div>
+                {/* Dropdown Menu */}
+                <div className="dropdown-content top-30 invisible absolute z-10 flex w-80 flex-col bg-neutral-900 p-7 group-hover:visible">
+                  <div className="py-4">
+                    <span className="mr-3">💥</span>
+                    <Link href="/services/detailing">
+                      <a className="detailing peer py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                        Detailing
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="py-4">
+                    <span className="mr-3">🔸</span>
+                    <Link href="/services/paint-correction">
+                      <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                        Paint Correction
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="py-4">
+                    <span className="mr-3">💎</span>
+                    <Link href="/services/paint-protection">
+                      <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                        Paint Protection
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="py-4">
+                    <span className="mr-3">🕶️</span>
+                    <Link href="/services/window-tinting">
+                      <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                        Window Tinting
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
               <Link href="#contact" scroll={false}>
                 <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
                   Contact
