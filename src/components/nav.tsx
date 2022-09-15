@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -8,9 +9,26 @@ import { AiFillCaretDown } from "react-icons/ai";
 
 export default function Nav(): JSX.Element {
   const [active, setActive] = useState(false);
+  const [dropdownActive, setDropdownActive] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (active) {
+      setActive(false);
+    }
+
+    if (dropdownActive) {
+      setDropdownActive(false);
+    }
+  }, [router]);
 
   const handleClick = () => {
     setActive(!active);
+  };
+
+  const handleMobileClick = () => {
+    setDropdownActive(!dropdownActive);
   };
 
   return (
@@ -38,16 +56,15 @@ export default function Nav(): JSX.Element {
               </Link>
               <div className="dropdown group inline-block overflow-hidden">
                 <div className="flex items-center">
-                  <Link href="/services">
-                    <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
-                      Services
-                    </a>
-                  </Link>
+                  <p className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                    Services
+                  </p>
                   <span className="mt-1 text-white">
                     <AiFillCaretDown />
                   </span>
                 </div>
                 {/* Dropdown Menu */}
+
                 <div className="dropdown-content top-30 invisible absolute z-10 flex w-80 flex-col bg-neutral-900 p-7 group-hover:visible">
                   <div className="py-4">
                     <span className="mr-3">💥</span>
@@ -83,6 +100,7 @@ export default function Nav(): JSX.Element {
                   </div>
                 </div>
               </div>
+
               <Link href="#contact" scroll={false}>
                 <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
                   Contact
@@ -134,12 +152,54 @@ export default function Nav(): JSX.Element {
                   </a>
                 </Link>
               </li>
-              <li>
-                <Link href="/services">
-                  <a className="block py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
-                    Services
-                  </a>
-                </Link>
+              <li onClick={handleMobileClick}>
+                <div className="dropdown group inline-block overflow-hidden">
+                  <div className="flex items-center">
+                    <p className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                      Services
+                    </p>
+                    <span className="mt-1 text-white">
+                      <AiFillCaretDown />
+                    </span>
+                  </div>
+                  {/* Mobile Dropdown Menu */}
+                  {dropdownActive && (
+                    <div className="dropdown-content group-hover:block">
+                      <div className="py-4">
+                        <span className="mr-3">💥</span>
+                        <Link href="/services/detailing">
+                          <a className="detailing peer py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                            Detailing
+                          </a>
+                        </Link>
+                      </div>
+                      <div className="py-4">
+                        <span className="mr-3">🔸</span>
+                        <Link href="/services/paint-correction">
+                          <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                            Paint Correction
+                          </a>
+                        </Link>
+                      </div>
+                      <div className="py-4">
+                        <span className="mr-3">💎</span>
+                        <Link href="/services/paint-protection">
+                          <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                            Paint Protection
+                          </a>
+                        </Link>
+                      </div>
+                      <div className="py-4">
+                        <span className="mr-3">🕶️</span>
+                        <Link href="/services/window-tinting">
+                          <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
+                            Window Tinting
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </li>
               <li>
                 <Link href="#contact" scroll={false}>

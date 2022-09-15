@@ -9,6 +9,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {},
+    minHeight: {
+      "3/4": "75vh",
+    },
   },
   plugins: [],
 };
