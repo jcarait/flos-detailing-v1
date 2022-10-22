@@ -49,7 +49,7 @@ export default function Nav(): JSX.Element {
                   Home
                 </a>
               </Link>
-              <Link href="/#about" scroll={false}>
+              <Link href="/#about" scroll={false} replace>
                 <a className="py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
                   About
                 </a>
@@ -146,7 +146,7 @@ export default function Nav(): JSX.Element {
                 </Link>
               </li>
               <li>
-                <Link href="#about" scroll={false}>
+                <Link href="#about" scroll={false} replace>
                   <a className="block py-4 px-2 font-semibold text-gray-500 transition duration-300 hover:text-red-500">
                     About
                   </a>
